@@ -27,7 +27,7 @@ service UIFrameworkAct {
   rpc register(RhTargetServer) returns (RhSessionID) {}
   rpc unregister(RhSessionID) returns (google.protobuf.Empty) {}
   rpc openApplication(OpenApplicationRequest) returns (ActResponse) {}
-  rpc closeApplication(RhSessionID) returns (ActResponse) {}
+  rpc closeApplication(BaseMessage) returns (ActResponse) {}
   rpc initConnection(InitConnectionRequest) returns (ActResponse) {}
   rpc closeConnection(BaseMessage) returns (ActResponse) {}
   rpc sendNewOrderSingle(SendNewOrderSingleRequest) returns (ActResponse) {}
