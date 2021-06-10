@@ -1,0 +1,14 @@
+.idea
+
+.gradle
+build
+/src/gen
+/shared/
+
+__pycache__/
+*.py[cod]
+*$py.class
+/venv/
+
+dist
+*egg-info
