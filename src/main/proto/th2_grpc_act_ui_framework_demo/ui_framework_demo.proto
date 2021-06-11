@@ -69,7 +69,7 @@ message SendNewOrderSingleRequest {
 
 message ExtractOrderDetailsRequest {
   BaseMessage base = 1;
-  map<string, string> extractionDetails = 2;
+  repeated string extractionFields = 2;
 }
 
 message ActResponse {
