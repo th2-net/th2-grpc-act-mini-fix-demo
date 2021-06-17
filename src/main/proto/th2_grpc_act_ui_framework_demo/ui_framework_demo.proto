@@ -31,7 +31,8 @@ service UIFrameworkAct {
   rpc initConnection(InitConnectionRequest) returns (ActResponse) {}
   rpc closeConnection(BaseMessage) returns (ActResponse) {}
   rpc sendNewOrderSingle(SendNewOrderSingleRequest) returns (ActResponse) {}
-  rpc extractOrderDetails(ExtractOrderDetailsRequest) returns (ActResponse) {}
+  rpc extractLastOrderDetails(ExtractLastOrderDetailsRequest) returns (ActResponse) {}
+  rpc extractLastSystemMessage(BaseMessage) returns (ActResponse) {}
 }
 
 message BaseMessage {
@@ -67,7 +68,7 @@ message SendNewOrderSingleRequest {
   repeated string toggleTags = 2;
 }
 
-message ExtractOrderDetailsRequest {
+message ExtractLastOrderDetailsRequest {
   BaseMessage base = 1;
   repeated string extractionFields = 2;
 }
