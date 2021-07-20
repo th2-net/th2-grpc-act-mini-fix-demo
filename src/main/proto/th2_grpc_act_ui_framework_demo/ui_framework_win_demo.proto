@@ -21,7 +21,7 @@ import "th2_grpc_common/common.proto";
 import "google/protobuf/empty.proto";
 
 option java_multiple_files = true;
-option java_package = "com.exactpro.th2.uiframework.grpc";
+option java_package = "com.exactpro.th2.uiframework.demo.win.grpc";
 
 service UIFrameworkAct {
   rpc register(RhTargetServer) returns (RhSessionID) {}
@@ -64,8 +64,13 @@ message InitConnectionRequest {
 }
 
 message SendNewOrderSingleRequest {
+  message Tags {
+    string tagNumber = 1;
+    string tagValue = 2;
+  }
+  
   BaseMessage base = 1;
-  repeated string toggleTags = 2;
+  repeated Tags tags = 2;
 }
 
 message ExtractLastOrderDetailsRequest {
