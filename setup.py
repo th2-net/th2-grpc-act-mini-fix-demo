@@ -114,12 +114,10 @@ setup(
     long_description_content_type='text/markdown',
     author='TH2-devs',
     author_email='th2-devs@exactprosystems.com',
-    url='https://github.com/th2-net/th2-grpc-act-ui-framework-demo',
+    url='https://github.com/th2-net/th2-grpc-act-uiframework-win-demo',
     license='Apache License 2.0',
     python_requires='>=3.7',
-    install_requires=[
-        'th2-grpc-common~=3.1.2'
-    ],
+    install_requires=[],
     packages=packages,
     package_data=package_data,
     cmdclass={
