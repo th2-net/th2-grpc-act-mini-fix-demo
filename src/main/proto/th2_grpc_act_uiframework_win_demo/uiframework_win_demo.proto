@@ -91,7 +91,11 @@ message ActResponse {
   ExecutionStatus scriptStatus = 2;
   string statusInfo = 3;
   string errorInfo = 4;
-  map<string, string> data = 5;
-  string executionId = 6;
-  MessageType messageType = 7;
+  map<string, ResponseData> data = 5;
+
+  message ResponseData {
+    string value = 1;
+    string executionId = 2;
+    MessageType messageType = 3;
+  }
 }
