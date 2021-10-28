@@ -92,10 +92,10 @@ message ActResponse {
   string statusInfo = 3;
   string errorInfo = 4;
   map<string, ResponseData> data = 5;
+  string executionId = 6;
 
   message ResponseData {
     string value = 1;
-    string executionId = 2;
-    MessageType messageType = 3;
+    MessageType messageType = 2;
   }
 }
