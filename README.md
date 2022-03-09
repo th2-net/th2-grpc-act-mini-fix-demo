@@ -1,1 +1,1 @@
-## th2-grpc-act-ui-framework-demo
+## th2-grpc-act-ui-framework-demo (1.2.0)

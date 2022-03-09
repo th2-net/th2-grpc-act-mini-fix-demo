@@ -117,7 +117,10 @@ setup(
     url='https://github.com/th2-net/th2-grpc-act-uiframework-win-demo',
     license='Apache License 2.0',
     python_requires='>=3.7',
-    install_requires=[],
+    install_requires=[
+    	'th2-grpc-common~=3.8.0',
+    	'th2-grpc-hand==2.10.0'
+    ],
     packages=packages,
     package_data=package_data,
     cmdclass={
