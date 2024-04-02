@@ -29,5 +29,5 @@ repositories {
 }
 
 dependencies {
-    implementation "com.exactpro.th2:grpc-hand:3.0.0-RM-84612-+"
+    implementation "com.exactpro.th2:grpc-hand:3.0.0-RM-84612-7739425497-SNAPSHOT"
 }
