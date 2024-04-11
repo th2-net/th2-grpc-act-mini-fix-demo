@@ -15,6 +15,7 @@ jobs:
   # Java
   build:
     uses: th2-net/.github/.github/workflows/compound-java.yml@main
+    needs: build-n-publish
     with:
       build-target: 'Sonatype'
       runsOn: ubuntu-latest

@@ -9,7 +9,7 @@ jobs:
     uses: th2-net/.github/.github/workflows/compound-prebuild-java-dev-workflow.yml@main
   build-n-publish:
     name: Dev build and Python distributions to PyPI
-    needs: [collect-version]
+    needs: collect-version
     uses: th2-net/.github/.github/workflows/compaund-python-grpc-pypi-publication.yml@main
     with:
       custom-version: ${{ needs.collect-version.outputs.versionNumber }}rc1
@@ -21,6 +21,7 @@ jobs:
   # Java
   build:
     uses: th2-net/.github/.github/workflows/compound-java.yml@main
+    needs: build-n-publish
     with:
       build-target: 'Sonatype'
       runsOn: ubuntu-latest
