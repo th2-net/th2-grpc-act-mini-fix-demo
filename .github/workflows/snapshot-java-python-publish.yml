@@ -9,19 +9,6 @@ on:
       - README.md
 
 jobs:
-  # Java
-  build-job:
-    uses: th2-net/.github/.github/workflows/compound-java-dev.yml@main
-    with:
-      build-target: 'Sonatype'
-      runsOn: ubuntu-latest
-      gradleVersion: '7'
-    secrets:
-      sonatypeUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
-      sonatypePassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
-      sonatypeSigningKey: ${{ secrets.SONATYPE_GPG_ARMORED_KEY }}
-      sonatypeSigningPassword: ${{ secrets.SONATYPE_SIGNING_PASSWORD }}
-      nvd-api-key: ${{ secrets.NVD_APIKEY }}
   # Python
   collect-version:
     name: Get version from gradle.properties
@@ -37,3 +24,16 @@ jobs:
   scan:
     name: Vulnerabilities scan
     uses: th2-net/.github/.github/workflows/python-scan.yml@main
+  # Java
+  build-job:
+    uses: th2-net/.github/.github/workflows/compound-java-dev.yml@main
+    with:
+      build-target: 'Sonatype'
+      runsOn: ubuntu-latest
+      gradleVersion: '7'
+    secrets:
+      sonatypeUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
+      sonatypePassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
+      sonatypeSigningKey: ${{ secrets.SONATYPE_GPG_ARMORED_KEY }}
+      sonatypeSigningPassword: ${{ secrets.SONATYPE_SIGNING_PASSWORD }}
+      nvd-api-key: ${{ secrets.NVD_APIKEY }}

@@ -3,6 +3,15 @@ name: Build and release Java distributions to sonatype & Python to PyPI.
 on: workflow_dispatch
 
 jobs:
+  # Python
+  build-n-publish:
+    name: Build and Python distributions to PyPI
+    uses: th2-net/.github/.github/workflows/compaund-python-grpc-pypi-publication.yml@main
+    secrets:
+      pypi_password: ${{ secrets.PYPI_PASSWORD }}
+  scan:
+    name: Vulnerabilities scan
+    uses: th2-net/.github/.github/workflows/python-scan.yml@main
   # Java
   build:
     uses: th2-net/.github/.github/workflows/compound-java.yml@main
@@ -18,12 +27,3 @@ jobs:
       sonatypeSigningKey: ${{ secrets.SONATYPE_GPG_ARMORED_KEY }}
       sonatypeSigningPassword: ${{ secrets.SONATYPE_SIGNING_PASSWORD }}
       nvd-api-key: ${{ secrets.NVD_APIKEY }}
-  # Python
-  build-n-publish:
-    name: Build and Python distributions to PyPI
-    uses: th2-net/.github/.github/workflows/compaund-python-grpc-pypi-publication.yml@main
-    secrets:
-      pypi_password: ${{ secrets.PYPI_PASSWORD }}
-  scan:
-    name: Vulnerabilities scan
-    uses: th2-net/.github/.github/workflows/python-scan.yml@main
