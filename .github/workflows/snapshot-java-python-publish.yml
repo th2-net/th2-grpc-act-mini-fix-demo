@@ -9,7 +9,7 @@ on:
       - README.md
 
 jobs:
-  # Python
+  # Python build and publish
   collect-version:
     name: Get version from gradle.properties
     uses: th2-net/.github/.github/workflows/compound-prebuild-java-dev-workflow.yml@main
@@ -24,8 +24,9 @@ jobs:
   scan:
     name: Vulnerabilities scan
     uses: th2-net/.github/.github/workflows/python-scan.yml@main
-  # Java
+  # Java build and publish
   build-job:
+    name: Build and publish Java distributions to sonatype
     uses: th2-net/.github/.github/workflows/compound-java-dev.yml@main
     needs: build-n-publish
     with:
