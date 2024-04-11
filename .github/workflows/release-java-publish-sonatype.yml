@@ -1,12 +1,6 @@
 name: Build and release Java distributions to sonatype.
 
-on:
-  push:
-    branches:
-      - master
-      - version-*
-    paths:
-      - gradle.properties
+on: workflow_dispatch
 
 jobs:
   build:
@@ -15,6 +9,8 @@ jobs:
       build-target: 'Sonatype'
       runsOn: ubuntu-latest
       gradleVersion: '7'
+      devRelease: false
+      createTag: true
     secrets:
       sonatypeUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
       sonatypePassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}

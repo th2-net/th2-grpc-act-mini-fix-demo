@@ -25,7 +25,7 @@ th2Grpc {
 }
 
 dependencies {
-    implementation("com.exactpro.th2:grpc-hand:3.0.0-RM-84612-8544324408-SNAPSHOT")
+    implementation("com.exactpro.th2:grpc-hand:3.0.0-dev")
 }
 
 repositories {

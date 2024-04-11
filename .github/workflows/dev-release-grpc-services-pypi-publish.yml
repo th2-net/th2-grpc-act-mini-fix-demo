@@ -1,9 +1,6 @@
 name: Dev release build and publish Python distributions to PyPI. New gRPC generator
 
-on:
-  push:
-    tags:
-      - \d+.\d+.\d+-dev
+on: workflow_dispatch
 
 jobs:
   collect-version:

@@ -1,12 +1,6 @@
 name: Build and publish Python distributions to PyPI. New gRPC generator
 
-on:
-  push:
-    branches:
-      - master
-      - version-*
-    paths:
-      - package_info.json
+on: workflow_dispatch
 
 jobs:
   build-n-publish:
