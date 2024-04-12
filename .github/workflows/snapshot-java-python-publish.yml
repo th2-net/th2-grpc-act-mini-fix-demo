@@ -1,0 +1,41 @@
+name: Dev build and publish Java distributions to sonatype snapshot repository & Python to PyPI
+
+on:
+  push:
+    branches-ignore:
+      - master
+      - version-*
+    paths-ignore:
+      - README.md
+
+jobs:
+  # Python build and publish
+  collect-version:
+    name: Get version from gradle.properties
+    uses: th2-net/.github/.github/workflows/compound-prebuild-java-dev-workflow.yml@main
+  build-n-publish:
+    name: Dev build and Python distributions to PyPI
+    needs: collect-version
+    uses: th2-net/.github/.github/workflows/compaund-python-grpc-pypi-publication.yml@main
+    with:
+      custom-version: ${{ needs.collect-version.outputs.versionNumber }}.dev${{ github.run_id }}
+    secrets:
+      pypi_password: ${{ secrets.PYPI_PASSWORD }}
+  scan:
+    name: Python vulnerabilities scan
+    uses: th2-net/.github/.github/workflows/python-scan.yml@main
+  # Java build and publish
+  build-job:
+    name: Build and publish Java distributions to sonatype
+    uses: th2-net/.github/.github/workflows/compound-java-dev.yml@main
+    needs: build-n-publish
+    with:
+      build-target: 'Sonatype'
+      runsOn: ubuntu-latest
+      gradleVersion: '7'
+    secrets:
+      sonatypeUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
+      sonatypePassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
+      sonatypeSigningKey: ${{ secrets.SONATYPE_GPG_ARMORED_KEY }}
+      sonatypeSigningPassword: ${{ secrets.SONATYPE_SIGNING_PASSWORD }}
+      nvd-api-key: ${{ secrets.NVD_APIKEY }}
