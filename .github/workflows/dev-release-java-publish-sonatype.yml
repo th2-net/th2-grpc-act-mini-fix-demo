@@ -16,7 +16,7 @@ jobs:
     secrets:
       pypi_password: ${{ secrets.PYPI_PASSWORD }}
   scan:
-    name: Vulnerabilities scan
+    name: Python vulnerabilities scan
     uses: th2-net/.github/.github/workflows/python-scan.yml@main
   # Java build and publish
   build:

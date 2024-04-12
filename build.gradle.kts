@@ -2,8 +2,7 @@ plugins {
     id("java-library")
     id("maven-publish")
 
-    val th2PluginVersion = "0.0.4"
-    id("com.exactpro.th2.gradle.base") version th2PluginVersion
+    val th2PluginVersion = "0.0.5"
     id("com.exactpro.th2.gradle.grpc") version th2PluginVersion
     id("com.exactpro.th2.gradle.publish") version th2PluginVersion
 }
